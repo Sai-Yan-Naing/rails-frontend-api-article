@@ -22,7 +22,7 @@
     title = $("#title").val();
     body = $("#body").val();
      $.ajax({
-        url: "http://localhost:3000/api/v1/articles",
+        url: "https://rails-backend-api-test.herokuapp.com/api/v1/articles",
         method: "POST",
         dataType: 'json',
         data: { title: title, body: body },

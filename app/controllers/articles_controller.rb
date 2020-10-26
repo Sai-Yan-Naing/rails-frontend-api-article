@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
 	# require 'rest-client'
 	require 'openssl'
 	def index
-		url = "http://localhost:3000/api/v1/articles"
+		url = "https://rails-backend-api-test.herokuapp.com/api/v1/articles"
 		resp = Net::HTTP.get_response(URI.parse(url))
 		@articles = JSON.parse(resp.body)
 
@@ -23,7 +23,7 @@ class ArticlesController < ApplicationController
 		require 'net/http'
 		response = RestClient::Request.new({
 	      method: :patch,
-	      url: 'http://localhost:3000/api/v1/articles/'+params[:id],
+	      url: 'https://rails-backend-api-test.herokuapp.com/api/v1/articles/'+params[:id],
 	       payload: { title: params[:title], body: params[:body] },
 	      headers: { :accept => :json, content_type: :json }
 	    }).execute do |response, request, result|
@@ -48,7 +48,7 @@ class ArticlesController < ApplicationController
 
 	def show
 
-		url = "http://localhost:3000/api/v1/articles/"+params[:id]
+		url = "https://rails-backend-api-test.herokuapp.com/api/v1/articles/"+params[:id]
 		body = RestClient.get(url)
 		@article=JSON.parse(body)
 	end

@@ -38,7 +38,7 @@
     id = $(this).attr("id");
     var this_tr =$(this);
      $.ajax({
-        url: "http://localhost:3000/api/v1/articles/"+id,
+        url: "https://rails-backend-api-test.herokuapp.com/api/v1/articles/"+id,
         method: "DELETE",
         dataType: 'json',
         data: { id: id },
