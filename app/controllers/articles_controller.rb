@@ -16,7 +16,11 @@ class ArticlesController < ApplicationController
 	end
 
 	def edit
-		
+		url = "https://rails-backend-api-test.herokuapp.com/api/v1/articles/"+params[:id]
+		resp = Net::HTTP.get_response(URI.parse(url))
+		@article = JSON.parse(resp.body)
+
+		# render json: @article
 	end
 
 	def update
