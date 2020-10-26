@@ -1,0 +1,52 @@
+
+<div class="jumbotron text-center">
+  <h1>My First Bootstrap Page</h1>
+  <p>Resize this responsive page to see the effect!</p> 
+</div>
+  
+<div class="container-fluid">
+  <div class="d-flex">
+    <p>Status</p> => <p><%= @articles['status'] %></p>
+  </div>
+  <div class="d-flex">
+    <p>Message</p> => <p><%= @articles['message'] %></p>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Body</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @articles['data'].each_with_index do |article,index| %>
+      <tr>
+        <td><a href="/articles/<%=article['id'] %>" data-method="get"><%= article['id'] %></a></td>
+        <td><%= article['title'] %></td>
+        <td><%= article['body'] %></td>
+        <td><a href="/articles/<%=article['id'] %>/edit">Edit</a><span class="delete" id=" <%=article['id'] %>">Delete</span></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<script type="text/javascript">
+  $(document).on("click",".delete",function(){
+    id = $(this).attr("id");
+    var this_tr =$(this);
+     $.ajax({
+        url: "http://localhost:3000/api/v1/articles/"+id,
+        method: "DELETE",
+        dataType: 'json',
+        data: { id: id },
+        success: function(html) {
+            alert(html['status']);
+            this_tr.parent().parent().fadeOut()
+        }
+    });
+    return false;
+  })
+</script>

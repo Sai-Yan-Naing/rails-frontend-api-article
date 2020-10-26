@@ -1,0 +1,29 @@
+
+<div class="jumbotron text-center">
+  <h1>My First Bootstrap Page</h1>
+  <p>Resize this responsive page to see the effect!</p> 
+</div>
+  
+<div class="container-fluid">
+  <div class="d-flex">
+    <p>Status</p> => <p><%= @article['status'] %></p>
+  </div>
+  <div class="d-flex">
+    <p>Message</p> => <p><%= @article['message'] %></p>
+  </div>
+  <table class="table">
+    <tr>
+        <th>ID</th>
+        <td><%= @article['data']['id'] %></td>
+    </tr>
+    <tr>
+        <th>Title</th>
+        <td><%= @article['data']['title'] %></td>
+    </tr>
+    <tr>
+        <th>Body</th>
+        <td><%= @article['data']['body'] %></td>
+    </tr>
+
+  </table>
+</div>
